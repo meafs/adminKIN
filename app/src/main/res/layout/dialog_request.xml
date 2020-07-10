@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="350dp"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:background="#232323"
+        android:orientation="vertical"
+        android:layout_marginTop="85dp"
+        >
+
+        <TextView
+            android:id="@+id/R_dia_hospital"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hospital"
+            android:textColor="@color/cardview_light_background"
+            android:textStyle="bold"
+            android:textSize="22sp"
+            android:layout_marginTop="60dp"
+            />
+        <TextView
+            android:id="@+id/R_dia_bld_grp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Blood Group"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="20sp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            />
+        <TextView
+            android:id="@+id/R_dia_no_ofbags"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No of Bags"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="18sp"
+            android:layout_marginBottom="5dp"
+            />
+        <TextView
+            android:id="@+id/R_dia_phn_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Phone Number"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="18sp"
+            android:layout_marginBottom="5dp"
+            />
+        <TextView
+            android:id="@+id/R_dia_condition"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Condition"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="18sp"
+            android:layout_marginBottom="5dp"
+            />
+
+        <Button
+            android:id="@+id/R_dia_btn_call"
+            android:padding="10dp"
+            android:layout_gravity="start"
+            android:drawablePadding="98dp"
+            android:drawableLeft="@drawable/ic_baseline_call_24"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:text="Mobile Call"
+            android:layout_marginTop="5dp"
+            android:gravity="start"
+            />
+        <Button
+            android:id="@+id/R_dia_btn_share"
+            android:padding="10dp"
+            android:layout_gravity="start"
+            android:drawablePadding="118dp"
+            android:drawableLeft="@drawable/ic_share"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:text="SHARE"
+            android:layout_marginTop="3dp"
+            android:gravity="start"
+            />
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@drawable/app_logo1"
+        android:padding="15dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        />
+
+</RelativeLayout>

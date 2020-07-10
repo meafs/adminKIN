@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="350dp"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:background="#232323"
+        android:orientation="vertical"
+        android:layout_marginTop="85dp"
+        >
+
+        <TextView
+            android:id="@+id/dia_dnr_nm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Donor Name"
+            android:textColor="@color/cardview_light_background"
+            android:textStyle="bold"
+            android:textSize="24sp"
+            android:layout_marginTop="80dp"
+            />
+        <TextView
+            android:id="@+id/dia_bld_grp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Blood Group"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="20sp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            />
+        <TextView
+            android:id="@+id/dia_phn_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Phone Number"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="15sp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            />
+        <TextView
+            android:id="@+id/dia_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Address"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="15sp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            />
+
+        <Button
+            android:id="@+id/dia_btn_call"
+            android:padding="10dp"
+            android:layout_gravity="start"
+            android:drawablePadding="98dp"
+            android:drawableLeft="@drawable/ic_baseline_call_24"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:text="Mobile Call"
+            android:layout_marginTop="5dp"
+            android:gravity="start"
+            />
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@drawable/app_logo1"
+        android:padding="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        />
+
+</RelativeLayout>
