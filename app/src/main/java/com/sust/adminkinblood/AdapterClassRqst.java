@@ -9,6 +9,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Build;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,7 +24,12 @@ import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.firestore.DocumentSnapshot;
+
 import java.util.ArrayList;
+
+import okhttp3.internal.cache.DiskLruCache;
 
 import static android.Manifest.permission.CALL_PHONE;
 
@@ -135,25 +141,33 @@ public class AdapterClassRqst extends RecyclerView.Adapter<AdapterClassRqst.View
     }
 
 
-    public static class ViewHolder extends RecyclerView.ViewHolder{
+    public void removeRqst(int i) {
+        mData.remove(i);
+        notifyItemRemoved(i);
+    }
+    public void restoreRqst(Rqst_Helper rqst,int i) {
+        mData.add(i,rqst);
+        notifyItemRemoved(i);
+    }
 
-        private TextView hospital_,  noOfBags_, blood_group, fullName, phoneNumber;
-        private ImageView call,share;
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+
+        private TextView hospital_, noOfBags_, blood_group, phoneNumber;
+        private ImageView call, share;
         private LinearLayout item_rqst;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            item_rqst=itemView.findViewById(R.id.Rqst_id);
-            hospital_=itemView.findViewById(R.id.Rqst_hospital);
-            blood_group=itemView.findViewById(R.id.Rqst_bld_grp);
-            noOfBags_=itemView.findViewById(R.id.Rqst_no_of_bags);
-            phoneNumber=itemView.findViewById(R.id.Rqst_phn_num);
-            call=itemView.findViewById(R.id.R_call);
-            share=itemView.findViewById(R.id.R_share);
+            item_rqst = itemView.findViewById(R.id.Rqst_id);
+            hospital_ = itemView.findViewById(R.id.Rqst_hospital);
+            blood_group = itemView.findViewById(R.id.Rqst_bld_grp);
+            noOfBags_ = itemView.findViewById(R.id.Rqst_no_of_bags);
+            phoneNumber = itemView.findViewById(R.id.Rqst_phn_num);
+            call = itemView.findViewById(R.id.R_call);
+            share = itemView.findViewById(R.id.R_share);
 
         }
+
     }
-
-
-
 }

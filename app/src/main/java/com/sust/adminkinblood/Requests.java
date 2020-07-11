@@ -2,10 +2,12 @@ package com.sust.adminkinblood;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.graphics.Canvas;
 import android.os.Bundle;
 import android.widget.SearchView;
 import android.widget.Toast;
@@ -23,7 +25,9 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class Requests extends AppCompatActivity {
+import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator;
+
+public class Requests extends AppCompatActivity  {
    // private DatabaseReference ref;
     private ArrayList<Rqst_Helper> rqst_list;
     private RecyclerView recyclerView;
@@ -31,6 +35,7 @@ public class Requests extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_requests);
 
@@ -44,6 +49,8 @@ public class Requests extends AppCompatActivity {
         recyclerView.setAdapter(adapterClassRqst);
         rqst_list = new ArrayList<>();
 
+        /*ItemTouchHelper.SimpleCallback itemTouchHelperCallBack = new RecyclerItemTouchHelper(0,ItemTouchHelper.LEFT|ItemTouchHelper.RIGHT,this);
+        new ItemTouchHelper(itemTouchHelperCallBack).attachToRecyclerView(recyclerView);*/
 
         Home.db.collection("Requests").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
@@ -83,7 +90,11 @@ public class Requests extends AppCompatActivity {
 
         }*/
 
+
+
     }
+
+
 
 
 
