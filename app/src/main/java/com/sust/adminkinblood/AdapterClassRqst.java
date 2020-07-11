@@ -20,6 +20,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.core.app.ActivityCompat;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -51,6 +52,7 @@ public class AdapterClassRqst extends RecyclerView.Adapter<AdapterClassRqst.View
         TextView r_nobags = myDialog.findViewById(R.id.R_dia_no_ofbags);
         TextView r_num = myDialog.findViewById(R.id.R_dia_phn_num);
         TextView r_condition = myDialog.findViewById(R.id.R_dia_condition);
+        TextView r_name=myDialog.findViewById(R.id.R_dia_name);
         Button btn_call = myDialog.findViewById(R.id.R_call);
         Button btn_share = myDialog.findViewById(R.id.R_share);
 
@@ -58,6 +60,7 @@ public class AdapterClassRqst extends RecyclerView.Adapter<AdapterClassRqst.View
         r_bld_grp.setText(mData.get(vHolder.getAdapterPosition()).getBlood_group());
         r_nobags.setText(mData.get(vHolder.getAdapterPosition()).getNoOfBags_());
         r_num.setText(mData.get(vHolder.getAdapterPosition()).getPhoneNumber());
+        r_name.setText(mData.get(vHolder.getAdapterPosition()).getFullName());
         r_condition.setText(mData.get(vHolder.getAdapterPosition()).getCondition_());
 
         btn_call.setOnClickListener(new View.OnClickListener() {
@@ -131,6 +134,7 @@ public class AdapterClassRqst extends RecyclerView.Adapter<AdapterClassRqst.View
         return mData.size();
     }
 
+
     public static class ViewHolder extends RecyclerView.ViewHolder{
 
         private TextView hospital_,  noOfBags_, blood_group, fullName, phoneNumber;
@@ -149,6 +153,7 @@ public class AdapterClassRqst extends RecyclerView.Adapter<AdapterClassRqst.View
 
         }
     }
+
 
 
 }

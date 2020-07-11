@@ -117,16 +117,16 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.ViewHolder> 
         private ImageView call;
         private LinearLayout item_Donor;
 
-            public ViewHolder(@NonNull View itemView) {
-                super(itemView);
-                item_Donor= itemView.findViewById(R.id.Dnr_id);;
-                dnr_Name = itemView.findViewById(R.id.dnr_name);
-                bld_grp = itemView.findViewById(R.id.bld_grp);
-                phn_num= itemView.findViewById(R.id.phn_num);
-                call = itemView.findViewById(R.id.call);
+        public ViewHolder(@NonNull View itemView) {
+            super(itemView);
+            item_Donor= itemView.findViewById(R.id.Dnr_id);;
+            dnr_Name = itemView.findViewById(R.id.dnr_name);
+            bld_grp = itemView.findViewById(R.id.bld_grp);
+            phn_num= itemView.findViewById(R.id.phn_num);
+            call = itemView.findViewById(R.id.call);
 
 
-            }
+        }
 
-            }
+    }
 }

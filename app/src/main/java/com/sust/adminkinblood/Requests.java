@@ -2,6 +2,7 @@ package com.sust.adminkinblood;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -9,18 +10,21 @@ import android.os.Bundle;
 import android.widget.SearchView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.Objects;
 
 public class Requests extends AppCompatActivity {
-    private DatabaseReference ref;
+   // private DatabaseReference ref;
     private ArrayList<Rqst_Helper> rqst_list;
     private RecyclerView recyclerView;
     private AdapterClassRqst adapterClassRqst;
@@ -29,14 +33,35 @@ public class Requests extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_requests);
+
         // FirebaseDatabase.getInstance().getReference("Tokens").child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid());
-        ref = FirebaseDatabase.getInstance().getReference().child("Tokens").child("TzewxuRq0pYGf0ORmliUzruV8Qu1").child("token");
+      //  ref = FirebaseDatabase.getInstance().getReference().child("Tokens").child("TzewxuRq0pYGf0ORmliUzruV8Qu1").child("token");
+
         recyclerView = findViewById(R.id.R_rv);
+        recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapterClassRqst = new AdapterClassRqst(this, rqst_list);
         recyclerView.setAdapter(adapterClassRqst);
+        rqst_list = new ArrayList<>();
 
-        if (ref != null) {
+
+        Home.db.collection("Requests").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @Override
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                if(!queryDocumentSnapshots.isEmpty())
+                {
+                    ArrayList<DocumentSnapshot> myList = (ArrayList<DocumentSnapshot>) queryDocumentSnapshots.getDocuments();
+                    for (DocumentSnapshot r: myList) {
+                        Rqst_Helper rqst = r.toObject(Rqst_Helper.class);
+                        rqst_list.add(rqst);
+                    }
+                    adapterClassRqst.notifyDataSetChanged();
+
+                }
+            }
+        });
+
+        /*if (ref != null) {
             ref.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -56,6 +81,10 @@ public class Requests extends AppCompatActivity {
                 }
             });
 
-        }
+        }*/
+
     }
+
+
+
 }

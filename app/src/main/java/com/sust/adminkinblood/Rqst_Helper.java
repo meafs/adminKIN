@@ -1,18 +1,27 @@
 package com.sust.adminkinblood;
 
 public class Rqst_Helper {
-    private String hospital_, condition_, noOfBags_, blood_group, fullName, phoneNumber;
+    private String hospital_, condition_, noOfBags_, blood_group, fullName, phoneNumber ,uid;
 
-    public Rqst_Helper(String hospital_, String condition_, String noOfBags_, String blood_group, String fullName, String phoneNumber) {
+    public Rqst_Helper(String hospital_, String condition_, String noOfBags_, String blood_group,String uid, String fullName, String phoneNumber) {
         this.hospital_ = hospital_;
         this.condition_ = condition_;
         this.noOfBags_ = noOfBags_;
         this.blood_group = blood_group;
         this.fullName = fullName;
         this.phoneNumber = phoneNumber;
+        this.uid = uid ;
     }
 
     public Rqst_Helper() {
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 
     public String getHospital_() {

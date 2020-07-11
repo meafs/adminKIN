@@ -7,20 +7,18 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.ViewGroup;
 import android.widget.SearchView;
-import android.widget.Toast;
 
+import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Donors extends AppCompatActivity  {
 
@@ -29,6 +27,7 @@ public class Donors extends AppCompatActivity  {
     private ArrayList<Dnr_Healper> dnr_list;
     private RecyclerView recyclerView;
     private SearchView searchView;
+
     private AdapterClass adapterClass;
 
 
@@ -42,9 +41,13 @@ public class Donors extends AppCompatActivity  {
 
         recyclerView = findViewById(R.id.rv);
         searchView = findViewById(R.id.search);
+        recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
         adapterClass =new AdapterClass(this,dnr_list);
         recyclerView.setAdapter(adapterClass);
+        dnr_list = new ArrayList<>();
+
 
         Home.db.collection("Users").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
@@ -65,8 +68,6 @@ public class Donors extends AppCompatActivity  {
                 }
             }
         });
-
-
 
 
 

@@ -15,10 +15,10 @@
         >
 
         <TextView
-            android:id="@+id/R_dia_hospital"
+            android:id="@+id/R_dia_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hospital"
+            android:text="Name"
             android:textColor="@color/cardview_light_background"
             android:textStyle="bold"
             android:textSize="22sp"
@@ -34,6 +34,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
             />
+
         <TextView
             android:id="@+id/R_dia_no_ofbags"
             android:layout_width="wrap_content"
@@ -41,6 +42,16 @@
             android:text="No of Bags"
             android:textColor="@color/cardview_light_background"
             android:textSize="18sp"
+            android:layout_marginBottom="5dp"
+            />
+        <TextView
+            android:id="@+id/R_dia_hospital"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hospital"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="20sp"
+            android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
             />
         <TextView
