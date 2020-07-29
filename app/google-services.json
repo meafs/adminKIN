@@ -1,100 +1,50 @@
 {
   "project_info": {
-    "project_number": "737173992030",
-    "firebase_url": "https://fir-5d762.firebaseio.com",
-    "project_id": "fir-5d762",
-    "storage_bucket": "fir-5d762.appspot.com"
+    "project_number": "707881930645",
+    "firebase_url": "https://kin-blood-1bb7a.firebaseio.com",
+    "project_id": "kin-blood-1bb7a",
+    "storage_bucket": "kin-blood-1bb7a.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:737173992030:android:7480df477fe1c3135cbacf",
+        "mobilesdk_app_id": "1:707881930645:android:3f6917ce4960e85eba309c",
         "android_client_info": {
           "package_name": "com.sust.adminkinblood"
         }
       },
       "oauth_client": [
         {
-          "client_id": "737173992030-2hdi1d46khs57odgrm58q4nf4rr26neq.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyCS0DaOaIMf-P_8-5pGNR26h0MT9nDa59Q"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "737173992030-2hdi1d46khs57odgrm58q4nf4rr26neq.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:737173992030:android:29563251b7e9f8405cbacf",
-        "android_client_info": {
-          "package_name": "com.sust.kinblooddemo"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "737173992030-emshod2ppcicpe21g6j204lfas98cjrb.apps.googleusercontent.com",
+          "client_id": "707881930645-c9luhsfelf2b743kvinrmo7ca22vva3s.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.sust.kinblooddemo",
-            "certificate_hash": "8c856583464639e0536bf944d6b09acecbf91438"
+            "package_name": "com.sust.kinblood",
+            "certificate_hash": "93f99a6ce71133807c4a75b278f6ad17091a8070"
           }
         },
         {
-          "client_id": "737173992030-2hdi1d46khs57odgrm58q4nf4rr26neq.apps.googleusercontent.com",
+          "client_id": "707881930645-qlvjn00juvjh9rvo5o3rvfmavmtjb4bs.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sust.kinblood",
+            "certificate_hash": "340b15de1bd5a5fbeee868356fed79764ee78484"
+          }
+        },
+        {
+          "client_id": "707881930645-f60pes1gqq4fctq21aoikl3mgpav2gr7.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCS0DaOaIMf-P_8-5pGNR26h0MT9nDa59Q"
+          "current_key": "AIzaSyAA0HM7aoOozerz77FkQyShn_OW5x_JURw"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "737173992030-2hdi1d46khs57odgrm58q4nf4rr26neq.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:737173992030:android:6a23960311faa8765cbacf",
-        "android_client_info": {
-          "package_name": "com.sust.testproject"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "737173992030-2hdi1d46khs57odgrm58q4nf4rr26neq.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyCS0DaOaIMf-P_8-5pGNR26h0MT9nDa59Q"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "737173992030-2hdi1d46khs57odgrm58q4nf4rr26neq.apps.googleusercontent.com",
+              "client_id": "707881930645-f60pes1gqq4fctq21aoikl3mgpav2gr7.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

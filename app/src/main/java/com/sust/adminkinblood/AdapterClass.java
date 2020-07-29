@@ -13,9 +13,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -23,22 +26,30 @@ import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 import static android.Manifest.permission.CALL_PHONE;
 
-public class AdapterClass extends RecyclerView.Adapter<AdapterClass.ViewHolder> {
+public class AdapterClass extends RecyclerView.Adapter<AdapterClass.ViewHolder> implements Filterable {
+
     Context mContext;
-    ArrayList<Dnr_Healper> mData;
+   private ArrayList<Dnr_Healper> mData;
+   private ArrayList<Dnr_Healper> mDataFull;
+
     Dialog myDialog;
 
     public AdapterClass(Context mContext, ArrayList<Dnr_Healper> list) {
         this.mData = list;
         this.mContext = mContext;
+        mDataFull = new ArrayList<>(list);
     }
 
-    public AdapterClass(ArrayList<Dnr_Healper> list) {
-        this.mData = list;
-    }
+//    public AdapterClass(ArrayList<Dnr_Healper> list) {
+//
+//      this.mData = list;
+//
+//    }
 
     @NonNull
     @Override
@@ -57,10 +68,10 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.ViewHolder> 
         TextView dnr_num = myDialog.findViewById(R.id.dia_phn_num);
         Button btn_call = myDialog.findViewById(R.id.dia_btn_call);
 
-        dnr_name.setText(mData.get(vHolder.getAdapterPosition()).getFullName());
-        bld_grp.setText(mData.get(vHolder.getAdapterPosition()).getBloodGroup());
-        dnr_add.setText(mData.get(vHolder.getAdapterPosition()).getAddress());
-        dnr_num.setText(mData.get(vHolder.getAdapterPosition()).getPhoneNumber());
+        dnr_name.setText(mData.get(i).getFullName());
+        bld_grp.setText(mData.get(i).getBloodGroup());
+        dnr_add.setText(mData.get(i).getAddress());
+        dnr_num.setText(mData.get(i).getPhoneNumber());
 
         btn_call.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.M)
@@ -129,4 +140,39 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.ViewHolder> 
         }
 
     }
+
+    @Override
+    public Filter getFilter() {
+
+        return fileterd;
+    }
+    private Filter fileterd = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            ArrayList<Dnr_Healper> fileterdList = new ArrayList<>();
+
+            if(constraint == null || constraint.length() == 0){
+                fileterdList.addAll(mDataFull);
+            }
+            else{
+                String searchKey = constraint.toString().toLowerCase().trim();
+                for(Dnr_Healper item: mDataFull){
+                    if(item.getBloodGroup().toLowerCase().contains(searchKey)){
+
+                        fileterdList.add(item);
+                    }
+                }
+            }
+            FilterResults results = new FilterResults();
+            results.values = fileterdList;
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+              mData.clear();
+              mData.addAll((Collection<? extends Dnr_Healper>) results.values);
+              notifyDataSetChanged();
+        }
+    };
 }

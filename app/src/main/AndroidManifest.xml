@@ -14,27 +14,34 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Requests"></activity>
-        <activity android:name=".Donors" />
-        <activity android:name=".Home" />
+        <activity android:name=".Donors"/>
+
+        <activity android:name=".Home" >
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+    </activity>
 
         <service
             android:name=".notification.MyFirebaseMessagingService"
             android:enabled="true"
             android:exported="true">
+
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
+
+
         </service>
 
         <activity android:name=".Notification" />
         <activity android:name=".SignUp" />
-        <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".MainActivity"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+
+
     </application>
 
 </manifest>

@@ -45,8 +45,7 @@ public class Requests extends AppCompatActivity  {
         recyclerView = findViewById(R.id.R_rv);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapterClassRqst = new AdapterClassRqst(this, rqst_list);
-        recyclerView.setAdapter(adapterClassRqst);
+
         rqst_list = new ArrayList<>();
 
         /*ItemTouchHelper.SimpleCallback itemTouchHelperCallBack = new RecyclerItemTouchHelper(0,ItemTouchHelper.LEFT|ItemTouchHelper.RIGHT,this);
@@ -67,6 +66,8 @@ public class Requests extends AppCompatActivity  {
                 }
             }
         });
+        adapterClassRqst = new AdapterClassRqst(this, rqst_list);
+        recyclerView.setAdapter(adapterClassRqst);
 
         /*if (ref != null) {
             ref.addValueEventListener(new ValueEventListener() {

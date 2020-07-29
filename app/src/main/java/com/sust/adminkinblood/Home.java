@@ -58,7 +58,7 @@ public class Home extends AppCompatActivity {
         btn_seeRqst = findViewById(R.id.Bsee_rqst);
         btn_ntf = findViewById(R.id.Bntf);
         btn_logout = findViewById(R.id.Blogout);
-
+        //btn_findDonor.setVisibility(View.INVISIBLE);
 
 
         btn_logout.setOnClickListener(new View.OnClickListener() {

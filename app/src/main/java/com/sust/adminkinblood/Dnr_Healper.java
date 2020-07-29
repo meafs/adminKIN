@@ -1,12 +1,31 @@
 package com.sust.adminkinblood;
 
 public class Dnr_Healper {
-    private String fullName, phoneNumber,address, gender, bloodGroup, occupation, institute, donarstatus, donatedBefore;
-    private int bDay, bMonth, bYear, donate_times, dDay, dMonth, dYear;
+    private String fullName, phoneNumber,address, gender, bloodGroup, occupation, institute, donorStatus, donatedBefore, email, currentAddress;
+    private int bDay, bMonth, bYear, donateTimes, dDay, dMonth, dYear;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getCurrentAddress() {
+        return currentAddress;
+    }
+
+    public void setCurrentAddress(String currentAddress) {
+        this.currentAddress = currentAddress;
+    }
 
     public Dnr_Healper() {
     }
-    public Dnr_Healper(String fullName, String phoneNumber, String address, String gender, String bloodGroup, String occupation, String institute, String donarstatus, String donatedBefore, int bDay, int bMonth, int bYear, int donate_times, int dDay, int dMonth, int dYear) {
+    public Dnr_Healper(String fullName, String phoneNumber, String address, String gender, String bloodGroup, String occupation,
+                       String institute, String donorStatus, String donatedBefore, String email ,String currentAddress,
+                       int bDay, int bMonth, int bYear, int donateTimes, int dDay, int dMonth, int dYear) {
+
         this.fullName = fullName;
         this.phoneNumber = phoneNumber;
         this.address = address;
@@ -14,15 +33,17 @@ public class Dnr_Healper {
         this.bloodGroup = bloodGroup;
         this.occupation = occupation;
         this.institute = institute;
-        this.donarstatus = donarstatus;
+        this.donorStatus = donorStatus;
         this.donatedBefore = donatedBefore;
         this.bDay = bDay;
         this.bMonth = bMonth;
         this.bYear = bYear;
-        this.donate_times = donate_times;
+        this.donateTimes = donateTimes;
         this.dDay = dDay;
         this.dMonth = dMonth;
         this.dYear = dYear;
+        this.email = email;
+        this.currentAddress = currentAddress;
     }
 
     public String getFullName() {
@@ -81,12 +102,12 @@ public class Dnr_Healper {
         this.institute = institute;
     }
 
-    public String getDonarstatus() {
-        return donarstatus;
+    public String getDonorStatus() {
+        return donorStatus;
     }
 
-    public void setDonarstatus(String donarstatus) {
-        this.donarstatus = donarstatus;
+    public void setDonorStatus(String donorStatus) {
+        this.donorStatus = donorStatus;
     }
 
     public String getDonatedBefore() {
@@ -121,12 +142,12 @@ public class Dnr_Healper {
         this.bYear = bYear;
     }
 
-    public int getDonate_times() {
-        return donate_times;
+    public int getDonateTimes() {
+        return donateTimes;
     }
 
-    public void setDonate_times(int donate_times) {
-        this.donate_times = donate_times;
+    public void setDonateTimes(int donateTimes) {
+        this.donateTimes = donateTimes;
     }
 
     public int getdDay() {

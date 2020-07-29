@@ -36,7 +36,7 @@ import static android.Manifest.permission.CALL_PHONE;
 public class AdapterClassRqst extends RecyclerView.Adapter<AdapterClassRqst.ViewHolder> {
 
     Context mContext;
-    ArrayList<Rqst_Helper> mData;
+    private ArrayList<Rqst_Helper> mData;
     Dialog myDialog;
 
     public AdapterClassRqst(Context mContext, ArrayList<Rqst_Helper> list) {
@@ -62,12 +62,12 @@ public class AdapterClassRqst extends RecyclerView.Adapter<AdapterClassRqst.View
         Button btn_call = myDialog.findViewById(R.id.R_call);
         Button btn_share = myDialog.findViewById(R.id.R_share);
 
-        r_hospital.setText(mData.get(vHolder.getAdapterPosition()).getHospital_());
-        r_bld_grp.setText(mData.get(vHolder.getAdapterPosition()).getBlood_group());
-        r_nobags.setText(mData.get(vHolder.getAdapterPosition()).getNoOfBags_());
-        r_num.setText(mData.get(vHolder.getAdapterPosition()).getPhoneNumber());
-        r_name.setText(mData.get(vHolder.getAdapterPosition()).getFullName());
-        r_condition.setText(mData.get(vHolder.getAdapterPosition()).getCondition_());
+        r_hospital.setText(mData.get(i).getHospital_());
+        r_bld_grp.setText(mData.get(i).getBlood_group());
+        r_nobags.setText(mData.get(i).getNoOfBags_());
+        r_num.setText(mData.get(i).getPhoneNumber());
+        r_name.setText(mData.get(i).getFullName());
+        r_condition.setText(mData.get(i).getCondition_());
 
         btn_call.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.M)
@@ -105,6 +105,7 @@ public class AdapterClassRqst extends RecyclerView.Adapter<AdapterClassRqst.View
         holder.blood_group.setText(mData.get(i).getBlood_group());
         holder.phoneNumber.setText(mData.get(i).getPhoneNumber());
         holder.noOfBags_.setText(mData.get(i).getNoOfBags_());
+
         holder.call.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
