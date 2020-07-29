@@ -4,21 +4,6 @@ public class Dnr_Healper {
     private String fullName, phoneNumber,address, gender, bloodGroup, occupation, institute, donorStatus, donatedBefore, email, currentAddress;
     private int bDay, bMonth, bYear, donateTimes, dDay, dMonth, dYear;
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getCurrentAddress() {
-        return currentAddress;
-    }
-
-    public void setCurrentAddress(String currentAddress) {
-        this.currentAddress = currentAddress;
-    }
 
     public Dnr_Healper() {
     }
@@ -43,6 +28,22 @@ public class Dnr_Healper {
         this.dMonth = dMonth;
         this.dYear = dYear;
         this.email = email;
+        this.currentAddress = currentAddress;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getCurrentAddress() {
+        return currentAddress;
+    }
+
+    public void setCurrentAddress(String currentAddress) {
         this.currentAddress = currentAddress;
     }
 

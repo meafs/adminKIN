@@ -20,6 +20,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
@@ -32,7 +33,7 @@ public class Requests extends AppCompatActivity  {
     private ArrayList<Rqst_Helper> rqst_list;
     private RecyclerView recyclerView;
     private AdapterClassRqst adapterClassRqst;
-
+    private FirebaseFirestore dbr;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -43,30 +44,37 @@ public class Requests extends AppCompatActivity  {
       //  ref = FirebaseDatabase.getInstance().getReference().child("Tokens").child("TzewxuRq0pYGf0ORmliUzruV8Qu1").child("token");
 
         recyclerView = findViewById(R.id.R_rv);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
         rqst_list = new ArrayList<>();
+        dbr = FirebaseFirestore.getInstance();
 
         /*ItemTouchHelper.SimpleCallback itemTouchHelperCallBack = new RecyclerItemTouchHelper(0,ItemTouchHelper.LEFT|ItemTouchHelper.RIGHT,this);
         new ItemTouchHelper(itemTouchHelperCallBack).attachToRecyclerView(recyclerView);*/
 
-        Home.db.collection("Requests").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+        dbr.collection("Requests").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                 if(!queryDocumentSnapshots.isEmpty())
                 {
                     ArrayList<DocumentSnapshot> myList = (ArrayList<DocumentSnapshot>) queryDocumentSnapshots.getDocuments();
                     for (DocumentSnapshot r: myList) {
+
                         Rqst_Helper rqst = r.toObject(Rqst_Helper.class);
+                        Toast.makeText(Requests.this,"Document exists",Toast.LENGTH_SHORT).show();
+
                         rqst_list.add(rqst);
                     }
                     adapterClassRqst.notifyDataSetChanged();
 
+                } else{
+                    Toast.makeText(Requests.this,"Document doesn't exist",Toast.LENGTH_SHORT).show();
+
                 }
             }
         });
+
         adapterClassRqst = new AdapterClassRqst(this, rqst_list);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapterClassRqst);
 
         /*if (ref != null) {

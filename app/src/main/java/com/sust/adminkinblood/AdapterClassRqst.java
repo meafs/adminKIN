@@ -36,7 +36,7 @@ import static android.Manifest.permission.CALL_PHONE;
 public class AdapterClassRqst extends RecyclerView.Adapter<AdapterClassRqst.ViewHolder> {
 
     Context mContext;
-    private ArrayList<Rqst_Helper> mData;
+    ArrayList<Rqst_Helper> mData;
     Dialog myDialog;
 
     public AdapterClassRqst(Context mContext, ArrayList<Rqst_Helper> list) {
@@ -46,11 +46,11 @@ public class AdapterClassRqst extends RecyclerView.Adapter<AdapterClassRqst.View
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
-        View view = LayoutInflater.from(mContext).inflate(R.layout.item_donor, parent, false);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.item_request, parent, false);
         final ViewHolder vHolder = new ViewHolder(view);
 
         myDialog = new Dialog(mContext);
-        myDialog.setContentView(R.layout.dialog_donor);
+        myDialog.setContentView(R.layout.dialog_request);
         myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
         TextView r_hospital = myDialog.findViewById(R.id.R_dia_hospital);
@@ -59,15 +59,15 @@ public class AdapterClassRqst extends RecyclerView.Adapter<AdapterClassRqst.View
         TextView r_num = myDialog.findViewById(R.id.R_dia_phn_num);
         TextView r_condition = myDialog.findViewById(R.id.R_dia_condition);
         TextView r_name=myDialog.findViewById(R.id.R_dia_name);
-        Button btn_call = myDialog.findViewById(R.id.R_call);
-        Button btn_share = myDialog.findViewById(R.id.R_share);
+        Button btn_call = myDialog.findViewById(R.id.R_dia_btn_call);
+        Button btn_share = myDialog.findViewById(R.id.R_dia_btn_share);
 
-        r_hospital.setText(mData.get(i).getHospital_());
-        r_bld_grp.setText(mData.get(i).getBlood_group());
-        r_nobags.setText(mData.get(i).getNoOfBags_());
+        r_hospital.setText(mData.get(i).getDonorHaveToGoLocationAddress());
+        r_bld_grp.setText(mData.get(i).getBloodGroup());
+        r_nobags.setText(mData.get(i).getNoOfBags());
         r_num.setText(mData.get(i).getPhoneNumber());
         r_name.setText(mData.get(i).getFullName());
-        r_condition.setText(mData.get(i).getCondition_());
+        r_condition.setText(mData.get(i).getCondition());
 
         btn_call.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.M)
@@ -101,10 +101,10 @@ public class AdapterClassRqst extends RecyclerView.Adapter<AdapterClassRqst.View
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int i) {
-        holder.hospital_.setText(mData.get(i).getHospital_());
-        holder.blood_group.setText(mData.get(i).getBlood_group());
-        holder.phoneNumber.setText(mData.get(i).getPhoneNumber());
-        holder.noOfBags_.setText(mData.get(i).getNoOfBags_());
+        holder.hospital_.setText(""+ mData.get(i).getDonorHaveToGoLocationAddress());
+        holder.blood_group.setText(""+ mData.get(i).getBloodGroup());
+        holder.phoneNumber.setText(""+ mData.get(i).getPhoneNumber());
+        holder.noOfBags_.setText(""+ mData.get(i).getNoOfBags());
 
         holder.call.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.M)
