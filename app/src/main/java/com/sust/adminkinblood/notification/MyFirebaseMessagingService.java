@@ -61,7 +61,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 .set(notificationHelper)
                 .addOnSuccessListener(aVoid -> {
                     NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(), App.EVENT_ID)
-                            .setSmallIcon(R.drawable.ic_android_black_24dp)
+                            .setSmallIcon(R.drawable.ic_app_logo_24dp)
                             .setContentTitle("New blood request arrived!")
                             .setContentText("Blood Group: " + bloodGroup + " Hospital: " + hospital)
                             .setPriority(NotificationCompat.PRIORITY_MAX);

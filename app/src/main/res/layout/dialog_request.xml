@@ -24,6 +24,17 @@
             android:textSize="22sp"
             android:layout_marginTop="60dp"
             />
+
+        <TextView
+            android:id="@+id/R_dia_phn_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Phone Number"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="18sp"
+            android:layout_marginBottom="5dp"
+            />
+
         <TextView
             android:id="@+id/R_dia_bld_grp"
             android:layout_width="wrap_content"
@@ -54,13 +65,15 @@
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
             />
+
         <TextView
-            android:id="@+id/R_dia_phn_num"
+            android:id="@+id/R_dia_address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Phone Number"
+            android:text="Address"
             android:textColor="@color/cardview_light_background"
-            android:textSize="18sp"
+            android:textSize="20sp"
+            android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
             />
         <TextView
@@ -72,6 +85,12 @@
             android:textSize="18sp"
             android:layout_marginBottom="5dp"
             />
+
+        <EditText
+            android:id="@+id/requester_uid"
+            android:background="#fff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
         <Button
             android:id="@+id/R_dia_btn_call"
@@ -87,18 +106,18 @@
             android:gravity="start"
             />
         <Button
-            android:id="@+id/R_dia_btn_share"
+            android:id="@+id/R_dia_btn_confirm"
             android:padding="10dp"
             android:layout_gravity="start"
-            android:drawablePadding="118dp"
-            android:drawableLeft="@drawable/ic_share"
+            android:drawablePadding="80dp"
+            android:drawableLeft="@drawable/ic_baseline_confirmation_number_24"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:color/white"
-            android:text="SHARE"
+            android:text="confirm request"
             android:layout_marginTop="3dp"
             android:gravity="start"
-            />
+            android:drawableStart="@drawable/ic_baseline_confirmation_number_24" />
     </LinearLayout>
 
     <ImageView

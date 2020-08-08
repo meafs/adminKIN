@@ -1,23 +1,44 @@
 package com.sust.adminkinblood;
 
+import java.util.Map;
+
 public class Rqst_Helper {
 
 
 
-    private String donorHaveToGoLocationAddress, condition, noOfBags, bloodGroup, fullName, phoneNumber, uid;
+    private String donorHaveToGoLocationAddress, donorHaveToGoLocationName, condition, noOfBags, bloodGroup, fullName, phoneNumber, uid;
+    private Map<String, Double> donorHaveToGoLatLng;
 
     public Rqst_Helper(){
 
     }
 
-    public Rqst_Helper(String donorHaveToGoLocationAddress, String condition, String noOfBags, String bloodGroup, String uid, String fullName, String phoneNumber) {
+    public Rqst_Helper(String donorHaveToGoLocationAddress, String donorHaveToGoLocationName, String condition, String noOfBags, String bloodGroup, String uid, String fullName, String phoneNumber, Map<String, Double> donorHaveToGoLatLng) {
         this.donorHaveToGoLocationAddress = donorHaveToGoLocationAddress;
+        this.donorHaveToGoLocationName = donorHaveToGoLocationName;
         this.condition = condition;
         this.noOfBags = noOfBags;
         this.bloodGroup = bloodGroup;
         this.fullName = fullName;
         this.phoneNumber = phoneNumber;
         this.uid = uid ;
+        this.donorHaveToGoLatLng = donorHaveToGoLatLng;
+    }
+
+    public String getDonorHaveToGoLocationAddress() {
+        return donorHaveToGoLocationAddress;
+    }
+
+    public void setDonorHaveToGoLocationAddress(String donorHaveToGoLocationAddress) {
+        this.donorHaveToGoLocationAddress = donorHaveToGoLocationAddress;
+    }
+
+    public String getDonorHaveToGoLocationName() {
+        return donorHaveToGoLocationName;
+    }
+
+    public void setDonorHaveToGoLocationName(String donorHaveToGoLocationName) {
+        this.donorHaveToGoLocationName = donorHaveToGoLocationName;
     }
 
     public String getCondition() {
@@ -68,13 +89,11 @@ public class Rqst_Helper {
         this.uid = uid;
     }
 
-    public String getDonorHaveToGoLocationAddress() {
-        return donorHaveToGoLocationAddress;
+    public Map<String, Double> getDonorHaveToGoLatLng() {
+        return donorHaveToGoLatLng;
     }
 
-    public void setDonorHaveToGoLocationAddress(String donorHaveToGoLocationAddress) {
-        this.donorHaveToGoLocationAddress = donorHaveToGoLocationAddress;
+    public void setDonorHaveToGoLatLng(Map<String, Double> donorHaveToGoLatLng) {
+        this.donorHaveToGoLatLng = donorHaveToGoLatLng;
     }
-
-
 }

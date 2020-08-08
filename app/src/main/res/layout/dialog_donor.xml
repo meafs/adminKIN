@@ -55,6 +55,13 @@
             android:layout_marginBottom="5dp"
             />
 
+        <EditText
+            android:id="@+id/requester_uid_for_donor"
+            android:hint="Request Code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#fff"/>
+
         <Button
             android:id="@+id/dia_btn_call"
             android:padding="10dp"
@@ -67,7 +74,35 @@
             android:text="Mobile Call"
             android:layout_marginTop="5dp"
             android:gravity="start"
-            />
+            android:drawableStart="@drawable/ic_baseline_call_24" />
+
+        <Button
+            android:id="@+id/dia_btn_assign_donor"
+            android:padding="10dp"
+            android:layout_gravity="start"
+            android:drawablePadding="98dp"
+            android:drawableLeft="@drawable/ic_baseline_assignment_24"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:text="Assign Donor"
+            android:layout_marginTop="5dp"
+            android:gravity="start"
+            android:drawableStart="@drawable/ic_baseline_assignment_24" />
+
+        <Button
+            android:id="@+id/dia_btn_notify_user"
+            android:padding="10dp"
+            android:layout_gravity="start"
+            android:drawablePadding="98dp"
+            android:drawableLeft="@drawable/ic_baseline_notifications_active_24"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:text="Notify User"
+            android:layout_marginTop="5dp"
+            android:gravity="start"
+            android:drawableStart="@drawable/ic_baseline_notifications_active_24" />
 
     </LinearLayout>
 

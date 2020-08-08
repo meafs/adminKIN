@@ -1,7 +1,7 @@
 package com.sust.adminkinblood;
 
 public class Dnr_Healper {
-    private String fullName, phoneNumber,address, gender, bloodGroup, occupation, institute, donorStatus, donatedBefore, email, currentAddress;
+    private String fullName, phoneNumber,address, gender, bloodGroup, occupation, institute, donorStatus, donatedBefore, email, currentAddress, UID;
     private int bDay, bMonth, bYear, donateTimes, dDay, dMonth, dYear;
 
 
@@ -9,7 +9,7 @@ public class Dnr_Healper {
     }
     public Dnr_Healper(String fullName, String phoneNumber, String address, String gender, String bloodGroup, String occupation,
                        String institute, String donorStatus, String donatedBefore, String email ,String currentAddress,
-                       int bDay, int bMonth, int bYear, int donateTimes, int dDay, int dMonth, int dYear) {
+                       int bDay, int bMonth, int bYear, int donateTimes, int dDay, int dMonth, int dYear, String UID) {
 
         this.fullName = fullName;
         this.phoneNumber = phoneNumber;
@@ -29,6 +29,7 @@ public class Dnr_Healper {
         this.dYear = dYear;
         this.email = email;
         this.currentAddress = currentAddress;
+        this.UID = UID;
     }
 
     public String getEmail() {
@@ -173,5 +174,13 @@ public class Dnr_Healper {
 
     public void setdYear(int dYear) {
         this.dYear = dYear;
+    }
+
+    public String getUID() {
+        return UID;
+    }
+
+    public void setUID(String UID) {
+        this.UID = UID;
     }
 }

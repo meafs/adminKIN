@@ -3,6 +3,7 @@ package com.sust.adminkinblood;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
@@ -24,10 +25,15 @@ import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.SetOptions;
 
 import java.util.ArrayList;
+import java.util.Map;
+import java.util.Objects;
 
 import okhttp3.internal.cache.DiskLruCache;
 
@@ -35,104 +41,31 @@ import static android.Manifest.permission.CALL_PHONE;
 
 public class AdapterClassRqst extends RecyclerView.Adapter<AdapterClassRqst.ViewHolder> {
 
+    private OnListListenerRqst mOnListListenerRqst;
     Context mContext;
     ArrayList<Rqst_Helper> mData;
-    Dialog myDialog;
 
-    public AdapterClassRqst(Context mContext, ArrayList<Rqst_Helper> list) {
+
+    public AdapterClassRqst(Context mContext, ArrayList<Rqst_Helper> list, OnListListenerRqst onListListenerRqst) {
         this.mData = list;
         this.mContext = mContext;
+        this.mOnListListenerRqst = onListListenerRqst;
     }
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
         View view = LayoutInflater.from(mContext).inflate(R.layout.item_request, parent, false);
-        final ViewHolder vHolder = new ViewHolder(view);
-
-        myDialog = new Dialog(mContext);
-        myDialog.setContentView(R.layout.dialog_request);
-        myDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
-        TextView r_hospital = myDialog.findViewById(R.id.R_dia_hospital);
-        TextView r_bld_grp = myDialog.findViewById(R.id.R_dia_bld_grp);
-        TextView r_nobags = myDialog.findViewById(R.id.R_dia_no_ofbags);
-        TextView r_num = myDialog.findViewById(R.id.R_dia_phn_num);
-        TextView r_condition = myDialog.findViewById(R.id.R_dia_condition);
-        TextView r_name=myDialog.findViewById(R.id.R_dia_name);
-        Button btn_call = myDialog.findViewById(R.id.R_dia_btn_call);
-        Button btn_share = myDialog.findViewById(R.id.R_dia_btn_share);
-
-        r_hospital.setText(mData.get(i).getDonorHaveToGoLocationAddress());
-        r_bld_grp.setText(mData.get(i).getBloodGroup());
-        r_nobags.setText(mData.get(i).getNoOfBags());
-        r_num.setText(mData.get(i).getPhoneNumber());
-        r_name.setText(mData.get(i).getFullName());
-        r_condition.setText(mData.get(i).getCondition());
-
-        btn_call.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.M)
-            @Override
-            public void onClick(View view) {
-                if (ActivityCompat.checkSelfPermission(mContext, CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-                    Intent intent = new Intent(Intent.ACTION_CALL);
-                    intent.setData(Uri.parse("tel:" + mData.get(i).getPhoneNumber()));
-                    ((Activity)mContext).startActivity(intent);
-                }
-                else {
-                    ((Activity)mContext).requestPermissions(new String[]{CALL_PHONE},401);
-                }
-            }
-        });
-
-        btn_share.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent share_intent = new Intent(Intent.ACTION_SEND);
-                share_intent.setType("text/plain");
-                share_intent.putExtra(Intent.EXTRA_TEXT,vHolder.phoneNumber.getText().toString()+"Contact "+mData.get(i));
-                share_intent.putExtra(Intent.EXTRA_TEXT,"Hey Could you help here..?");
-                ((Activity)mContext).startActivity(Intent.createChooser(share_intent,"SHARE BY"));
-            }
-        });
-
+        final ViewHolder vHolder = new ViewHolder(view, mOnListListenerRqst);
 
         return vHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int i) {
-        holder.hospital_.setText(""+ mData.get(i).getDonorHaveToGoLocationAddress());
-        holder.blood_group.setText(""+ mData.get(i).getBloodGroup());
-        holder.phoneNumber.setText(""+ mData.get(i).getPhoneNumber());
-        holder.noOfBags_.setText(""+ mData.get(i).getNoOfBags());
-
-        holder.call.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.M)
-            @Override
-            public void onClick(View view) {
-
-                if (ActivityCompat.checkSelfPermission(mContext, CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-                    Intent intent = new Intent(Intent.ACTION_CALL);
-                    intent.setData(Uri.parse("tel:" + mData.get(i).getPhoneNumber()));
-                    ((Activity)mContext).startActivity(intent);
-                }
-                else {
-                    ((Activity)mContext).requestPermissions(new String[]{CALL_PHONE},401);
-                }
-            }
-        });
-
-        holder.share.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent share_intent = new Intent(Intent.ACTION_SEND);
-                share_intent.setType("text/plain");
-                share_intent.putExtra(Intent.EXTRA_TEXT,holder.phoneNumber.getText().toString()+"Contact "+mData.get(i));
-                share_intent.putExtra(Intent.EXTRA_TEXT,"Hey Could you help here..?");
-                ((Activity)mContext).startActivity(Intent.createChooser(share_intent,"SHARE BY"));
-            }
-        });
-
+        holder.hospital.setText(""+ mData.get(i).getDonorHaveToGoLocationAddress());
+        holder.bloodGroup.setText(""+ mData.get(i).getBloodGroup());
+        holder.condition.setText(""+ mData.get(i).getPhoneNumber());
+        holder.noOfBags.setText(""+ mData.get(i).getNoOfBags());
 
     }
 
@@ -151,24 +84,33 @@ public class AdapterClassRqst extends RecyclerView.Adapter<AdapterClassRqst.View
         notifyItemRemoved(i);
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        private TextView hospital_, noOfBags_, blood_group, phoneNumber;
-        private ImageView call, share;
+        private TextView hospital, noOfBags, bloodGroup, condition;
         private LinearLayout item_rqst;
+        OnListListenerRqst onListListenerRqst;
 
-        public ViewHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull View itemView, OnListListenerRqst onListListenerRqst) {
             super(itemView);
 
             item_rqst = itemView.findViewById(R.id.Rqst_id);
-            hospital_ = itemView.findViewById(R.id.Rqst_hospital);
-            blood_group = itemView.findViewById(R.id.Rqst_bld_grp);
-            noOfBags_ = itemView.findViewById(R.id.Rqst_no_of_bags);
-            phoneNumber = itemView.findViewById(R.id.Rqst_phn_num);
-            call = itemView.findViewById(R.id.R_call);
-            share = itemView.findViewById(R.id.R_share);
+            hospital = itemView.findViewById(R.id.Rqst_hospital);
+            bloodGroup = itemView.findViewById(R.id.Rqst_bld_grp);
+            noOfBags = itemView.findViewById(R.id.Rqst_no_of_bags);
+            condition = itemView.findViewById(R.id.Rqst_condition);
+            this.onListListenerRqst = onListListenerRqst;
 
+            itemView.setOnClickListener(this);
         }
 
+
+        @Override
+        public void onClick(View view) {
+            onListListenerRqst.OnListClickRqst(getAdapterPosition());
+        }
+    }
+
+    public interface OnListListenerRqst{
+        void OnListClickRqst(int position);
     }
 }

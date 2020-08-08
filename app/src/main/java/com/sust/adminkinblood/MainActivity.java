@@ -80,10 +80,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void tv_logintoreg(View view) {
-        startActivity(new Intent(getApplicationContext(), SignUp.class));
-    }
-
     @Override
     protected void onStart() {
         super.onStart();
