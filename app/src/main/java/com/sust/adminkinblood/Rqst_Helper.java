@@ -6,14 +6,14 @@ public class Rqst_Helper {
 
 
 
-    private String donorHaveToGoLocationAddress, donorHaveToGoLocationName, condition, noOfBags, bloodGroup, fullName, phoneNumber, uid;
-    private Map<String, Double> donorHaveToGoLatLng;
+    private String donorHaveToGoLocationAddress, donorHaveToGoLocationName, condition, noOfBags, bloodGroup, fullName, phoneNumber, uid, text, time;
+    private double donorHaveToGoLatitude, donorHaveToGoLongitude;
 
     public Rqst_Helper(){
 
     }
 
-    public Rqst_Helper(String donorHaveToGoLocationAddress, String donorHaveToGoLocationName, String condition, String noOfBags, String bloodGroup, String uid, String fullName, String phoneNumber, Map<String, Double> donorHaveToGoLatLng) {
+    public Rqst_Helper(String donorHaveToGoLocationAddress, String donorHaveToGoLocationName, String condition, String noOfBags, String bloodGroup, String uid, String fullName, String phoneNumber, double donorHaveToGoLatitude, double donorHaveToGoLongitude, String text, String time) {
         this.donorHaveToGoLocationAddress = donorHaveToGoLocationAddress;
         this.donorHaveToGoLocationName = donorHaveToGoLocationName;
         this.condition = condition;
@@ -22,7 +22,10 @@ public class Rqst_Helper {
         this.fullName = fullName;
         this.phoneNumber = phoneNumber;
         this.uid = uid ;
-        this.donorHaveToGoLatLng = donorHaveToGoLatLng;
+        this.donorHaveToGoLatitude = donorHaveToGoLatitude;
+        this.donorHaveToGoLongitude = donorHaveToGoLongitude;
+        this.text = text;
+        this.time = time;
     }
 
     public String getDonorHaveToGoLocationAddress() {
@@ -89,11 +92,35 @@ public class Rqst_Helper {
         this.uid = uid;
     }
 
-    public Map<String, Double> getDonorHaveToGoLatLng() {
-        return donorHaveToGoLatLng;
+    public double getDonorHaveToGoLatitude() {
+        return donorHaveToGoLatitude;
     }
 
-    public void setDonorHaveToGoLatLng(Map<String, Double> donorHaveToGoLatLng) {
-        this.donorHaveToGoLatLng = donorHaveToGoLatLng;
+    public void setDonorHaveToGoLatitude(double donorHaveToGoLatitude) {
+        this.donorHaveToGoLatitude = donorHaveToGoLatitude;
+    }
+
+    public double getDonorHaveToGoLongitude() {
+        return donorHaveToGoLongitude;
+    }
+
+    public void setDonorHaveToGoLongitude(double donorHaveToGoLongitude) {
+        this.donorHaveToGoLongitude = donorHaveToGoLongitude;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 }

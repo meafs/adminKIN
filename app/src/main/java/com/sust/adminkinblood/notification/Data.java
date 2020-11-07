@@ -1,22 +1,13 @@
 package com.sust.adminkinblood.notification;
 
 public class Data {
-    String title, message;
+    String message;
 
     public Data() {
     }
 
-    public Data(String title, String message) {
-        this.title = title;
+    public Data(String message) {
         this.message = message;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
     }
 
     public String getMessage() {

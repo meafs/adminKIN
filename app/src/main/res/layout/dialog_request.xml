@@ -1,132 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="350dp"
     android:layout_height="wrap_content"
-    android:layout_gravity="center_horizontal"
-    >
+    android:layout_gravity="center_horizontal">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:background="#232323"
-        android:orientation="vertical"
         android:layout_marginTop="85dp"
-        >
+        android:background="#232323"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/R_dia_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
             android:text="Name"
             android:textColor="@color/cardview_light_background"
-            android:textStyle="bold"
             android:textSize="22sp"
-            android:layout_marginTop="60dp"
-            />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/R_dia_phn_num"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
             android:text="Phone Number"
             android:textColor="@color/cardview_light_background"
-            android:textSize="18sp"
-            android:layout_marginBottom="5dp"
-            />
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/R_dia_bld_grp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Blood Group"
-            android:textColor="@color/cardview_light_background"
-            android:textSize="20sp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            />
+            android:text="Blood Group"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/R_dia_no_ofbags"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
             android:text="No of Bags"
             android:textColor="@color/cardview_light_background"
-            android:textSize="18sp"
-            android:layout_marginBottom="5dp"
-            />
+            android:textSize="18sp" />
+
         <TextView
             android:id="@+id/R_dia_hospital"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hospital"
-            android:textColor="@color/cardview_light_background"
-            android:textSize="20sp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            />
+            android:text="Hospital"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/R_dia_address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Address"
-            android:textColor="@color/cardview_light_background"
-            android:textSize="20sp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            />
+            android:text="Address"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="20sp" />
+
         <TextView
             android:id="@+id/R_dia_condition"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
             android:text="Condition"
             android:textColor="@color/cardview_light_background"
-            android:textSize="18sp"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/R_dia_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
-            />
+            android:text="text"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/R_dia_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="time"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="18sp" />
 
         <EditText
             android:id="@+id/requester_uid"
-            android:background="#fff"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:background="#fff" />
 
         <Button
             android:id="@+id/R_dia_btn_call"
-            android:padding="10dp"
-            android:layout_gravity="start"
-            android:drawablePadding="98dp"
-            android:drawableLeft="@drawable/ic_baseline_call_24"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@android:color/white"
-            android:text="Mobile Call"
+            android:layout_gravity="start"
             android:layout_marginTop="5dp"
+            android:background="@android:color/white"
+            android:drawableLeft="@drawable/ic_baseline_call_24"
+            android:drawablePadding="98dp"
             android:gravity="start"
-            />
+            android:padding="10dp"
+            android:text="Mobile Call" />
+
         <Button
             android:id="@+id/R_dia_btn_confirm"
-            android:padding="10dp"
-            android:layout_gravity="start"
-            android:drawablePadding="80dp"
-            android:drawableLeft="@drawable/ic_baseline_confirmation_number_24"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@android:color/white"
-            android:text="confirm request"
+            android:layout_gravity="start"
             android:layout_marginTop="3dp"
+            android:background="@android:color/white"
+            android:drawableStart="@drawable/ic_baseline_confirmation_number_24"
+            android:drawableLeft="@drawable/ic_baseline_confirmation_number_24"
+            android:drawablePadding="80dp"
             android:gravity="start"
-            android:drawableStart="@drawable/ic_baseline_confirmation_number_24" />
+            android:padding="10dp"
+            android:text="confirm request" />
     </LinearLayout>
 
     <ImageView
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:src="@drawable/app_logo1"
-        android:padding="15dp"
-        android:layout_centerHorizontal="true"
         android:layout_alignParentTop="true"
-        />
+        android:layout_centerHorizontal="true"
+        android:padding="15dp"
+        android:src="@drawable/app_logo1" />
 
 </RelativeLayout>

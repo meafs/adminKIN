@@ -23,6 +23,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -51,12 +52,9 @@ import static android.Manifest.permission.CALL_PHONE;
 public class Requests extends AppCompatActivity implements AdapterClassRqst.OnListListenerRqst {
    // private DatabaseReference ref;
     private ArrayList<Rqst_Helper> rqst_list;
-    private RecyclerView recyclerView;
     private AdapterClassRqst adapterClassRqst;
     private FirebaseFirestore dbr;
     private Dialog requestInfo;
-    Map<String, Double> donorHaveToGoLatLng;
-    String donorHaveToGoLocationName, donorHaveToGoLocationAddress, bloodGroup, noOfBags, phoneNumber, fullName, condition, uid;
 
 
     @Override
@@ -68,7 +66,7 @@ public class Requests extends AppCompatActivity implements AdapterClassRqst.OnLi
         // FirebaseDatabase.getInstance().getReference("Tokens").child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid());
       //  ref = FirebaseDatabase.getInstance().getReference().child("Tokens").child("TzewxuRq0pYGf0ORmliUzruV8Qu1").child("token");
 
-        recyclerView = findViewById(R.id.R_rv);
+        RecyclerView recyclerView = findViewById(R.id.R_rv);
         rqst_list = new ArrayList<>();
         dbr = FirebaseFirestore.getInstance();
 
@@ -137,6 +135,7 @@ public class Requests extends AppCompatActivity implements AdapterClassRqst.OnLi
     }
 
     private void showRequestDialog(int i) {
+
         requestInfo.setContentView(R.layout.dialog_request);
         requestInfo.setCanceledOnTouchOutside(true);
 
@@ -151,16 +150,19 @@ public class Requests extends AppCompatActivity implements AdapterClassRqst.OnLi
         TextView r_num = requestInfo.findViewById(R.id.R_dia_phn_num);
         TextView r_condition = requestInfo.findViewById(R.id.R_dia_condition);
         TextView r_name=requestInfo.findViewById(R.id.R_dia_name);
+        TextView r_text=requestInfo.findViewById(R.id.R_dia_text);
+        TextView r_time=requestInfo.findViewById(R.id.R_dia_time);
 
-        donorHaveToGoLocationName = rqst_list.get(i).getDonorHaveToGoLocationName();
-        donorHaveToGoLocationAddress = rqst_list.get(i).getDonorHaveToGoLocationAddress();
-        bloodGroup = rqst_list.get(i).getBloodGroup();
-        noOfBags = rqst_list.get(i).getNoOfBags();
-        phoneNumber = rqst_list.get(i).getPhoneNumber();
-        fullName = rqst_list.get(i).getFullName();
-        condition = rqst_list.get(i).getCondition();
-        donorHaveToGoLatLng = rqst_list.get(i).getDonorHaveToGoLatLng();
-        uid = rqst_list.get(i).getUid();
+
+        String donorHaveToGoLocationName = rqst_list.get(i).getDonorHaveToGoLocationName();
+        String donorHaveToGoLocationAddress = rqst_list.get(i).getDonorHaveToGoLocationAddress();
+        String bloodGroup = rqst_list.get(i).getBloodGroup();
+        String noOfBags = rqst_list.get(i).getNoOfBags();
+        String phoneNumber = rqst_list.get(i).getPhoneNumber();
+        String fullName = rqst_list.get(i).getFullName();
+        String condition = rqst_list.get(i).getCondition();
+        String time = rqst_list.get(i).getTime();
+        String text = rqst_list.get(i).getText();
 
         r_hospital.setText(donorHaveToGoLocationName);
         r_address.setText(donorHaveToGoLocationAddress);
@@ -169,6 +171,8 @@ public class Requests extends AppCompatActivity implements AdapterClassRqst.OnLi
         r_num.setText(phoneNumber);
         r_name.setText(fullName);
         r_condition.setText(condition);
+        r_text.setText(text);
+        r_time.setText(time);
 
 
         btn_call.setOnClickListener(view -> {

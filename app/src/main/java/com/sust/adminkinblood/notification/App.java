@@ -16,7 +16,7 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
 
-        @SuppressLint("WrongConstant") NotificationChannel channel = new NotificationChannel(EVENT_ID, "Recent Events", NotificationManager.IMPORTANCE_MAX);
+        NotificationChannel channel = new NotificationChannel(EVENT_ID, "Recent Events", NotificationManager.IMPORTANCE_HIGH);
 
         NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         assert manager != null;

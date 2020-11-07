@@ -62,9 +62,9 @@ public class AdapterClassRqst extends RecyclerView.Adapter<AdapterClassRqst.View
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int i) {
-        holder.hospital.setText(""+ mData.get(i).getDonorHaveToGoLocationAddress());
+        holder.hospital.setText(""+ mData.get(i).getDonorHaveToGoLocationName());
         holder.bloodGroup.setText(""+ mData.get(i).getBloodGroup());
-        holder.condition.setText(""+ mData.get(i).getPhoneNumber());
+        holder.condition.setText(""+ mData.get(i).getCondition());
         holder.noOfBags.setText(""+ mData.get(i).getNoOfBags());
 
     }
@@ -103,9 +103,9 @@ public class AdapterClassRqst extends RecyclerView.Adapter<AdapterClassRqst.View
             itemView.setOnClickListener(this);
         }
 
-
         @Override
         public void onClick(View view) {
+            view.setBackgroundColor(Color.RED);
             onListListenerRqst.OnListClickRqst(getAdapterPosition());
         }
     }

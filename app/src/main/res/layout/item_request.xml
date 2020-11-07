@@ -5,6 +5,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
     android:padding="5dp"
+    android:background="#ffffff"
+    android:layout_marginBottom="20dp"
     android:id="@+id/Rqst_id">
 
     <ImageView
@@ -72,7 +74,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
-                android:text="Hospital"
+                android:text="Hospital: "
                 />
 
             <TextView
@@ -94,7 +96,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
-                android:text="Patient Condition"
+                android:text="Patient Condition: "
                 />
 
             <TextView
