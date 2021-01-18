@@ -175,8 +175,7 @@ public class Donors extends AppCompatActivity implements AdapterClass.OnListList
                 search(s);
 
                 //  Toast.makeText(Donors.this,"In",Toast.LENGTH_SHORT).show();
-                return false
-                        ;
+                return true;
             }
 
             private void search(String str) {
@@ -196,11 +195,15 @@ public class Donors extends AppCompatActivity implements AdapterClass.OnListList
                 for (Dnr_Healper object : dnr_list) {
                     if (object.getBloodGroup().toLowerCase().contains(str.toLowerCase())) {
                         mylist.add(object);
+
                     }
                 }
 
 
                 AdapterClass adapterClass = new AdapterClass(Donors.this, mylist, Donors.this);
+
+                adapterClass.notifyDataSetChanged();
+
                 recyclerView.setAdapter(adapterClass);
 
             }
@@ -213,9 +216,12 @@ public class Donors extends AppCompatActivity implements AdapterClass.OnListList
     @Override
     public void OnListClick(int position) {
         showDonorDialog(position);
+
+        Log.d("TAG", "OnListClick: " + position);
     }
 
     private void showDonorDialog(int i) {
+
         donorinfo.setContentView(R.layout.dialog_donor);
         donorinfo.setCanceledOnTouchOutside(true);
 
@@ -230,9 +236,9 @@ public class Donors extends AppCompatActivity implements AdapterClass.OnListList
 
         dnr_name.setText(dnr_list.get(i).getFullName());
         bld_grp.setText(dnr_list.get(i).getBloodGroup());
-        dnr_add.setText(dnr_list.get(i).getAddress());
+        dnr_add.setText(dnr_list.get(i).getCurrentLocationAddress());
         dnr_num.setText(dnr_list.get(i).getPhoneNumber());
-        uid = dnr_list.get(i).getUID();
+        uid = dnr_list.get(i).getUid();
 
         btn_call.setOnClickListener(view -> {
             if (ActivityCompat.checkSelfPermission(Donors.this, CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {

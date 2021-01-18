@@ -1,51 +1,42 @@
 package com.sust.adminkinblood;
 
+import java.util.Date;
+
 public class Dnr_Healper {
-    private String fullName, phoneNumber,address, gender, bloodGroup, occupation, institute, donorStatus, donatedBefore, email, currentAddress, UID;
-    private int bDay, bMonth, bYear, donateTimes, dDay, dMonth, dYear;
+    private String fullName, phoneNumber, currentLocationName, currentLocationAddress,  gender, bloodGroup, occupation, institute, donorStatus, email, uid, department, formFactor, homeDistrict, requestStatus, session;
+    private int donateTimes, penalty;
+    private Double currentLocationLatitude, currentLocationLongitude;
+    private boolean available, donating;
+
 
 
     public Dnr_Healper() {
     }
-    public Dnr_Healper(String fullName, String phoneNumber, String address, String gender, String bloodGroup, String occupation,
-                       String institute, String donorStatus, String donatedBefore, String email ,String currentAddress,
-                       int bDay, int bMonth, int bYear, int donateTimes, int dDay, int dMonth, int dYear, String UID) {
 
+    public Dnr_Healper(String fullName, String phoneNumber, String currentLocationName, String currentLocationAddress, String gender, String bloodGroup, String occupation, String institute, String donorStatus, String email, String department, String formFactor, String homeDistrict, String requestStatus, String session, String uid, int donateTimes, int penalty, Date bDate, Date lDonation, Double currentLocationLatitude, Double currentLocationLongitude, boolean available, boolean donating) {
         this.fullName = fullName;
         this.phoneNumber = phoneNumber;
-        this.address = address;
+        this.currentLocationName = currentLocationName;
+        this.currentLocationAddress = currentLocationAddress;
         this.gender = gender;
         this.bloodGroup = bloodGroup;
         this.occupation = occupation;
         this.institute = institute;
         this.donorStatus = donorStatus;
-        this.donatedBefore = donatedBefore;
-        this.bDay = bDay;
-        this.bMonth = bMonth;
-        this.bYear = bYear;
+        this.email = email;
+        this.uid = uid;
+        this.department = department;
+        this.formFactor = formFactor;
+        this.homeDistrict = homeDistrict;
+        this.requestStatus = requestStatus;
+        this.session = session;
+        this.uid = uid;
         this.donateTimes = donateTimes;
-        this.dDay = dDay;
-        this.dMonth = dMonth;
-        this.dYear = dYear;
-        this.email = email;
-        this.currentAddress = currentAddress;
-        this.UID = UID;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getCurrentAddress() {
-        return currentAddress;
-    }
-
-    public void setCurrentAddress(String currentAddress) {
-        this.currentAddress = currentAddress;
+        this.penalty = penalty;
+        this.currentLocationLatitude = currentLocationLatitude;
+        this.currentLocationLongitude = currentLocationLongitude;
+        this.available = available;
+        this.donating = donating;
     }
 
     public String getFullName() {
@@ -64,12 +55,20 @@ public class Dnr_Healper {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getAddress() {
-        return address;
+    public String getCurrentLocationName() {
+        return currentLocationName;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setCurrentLocationName(String currentLocationName) {
+        this.currentLocationName = currentLocationName;
+    }
+
+    public String getCurrentLocationAddress() {
+        return currentLocationAddress;
+    }
+
+    public void setCurrentLocationAddress(String currentLocationAddress) {
+        this.currentLocationAddress = currentLocationAddress;
     }
 
     public String getGender() {
@@ -112,36 +111,61 @@ public class Dnr_Healper {
         this.donorStatus = donorStatus;
     }
 
-    public String getDonatedBefore() {
-        return donatedBefore;
+    public String getEmail() {
+        return email;
     }
 
-    public void setDonatedBefore(String donatedBefore) {
-        this.donatedBefore = donatedBefore;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public int getbDay() {
-        return bDay;
+
+    public String getDepartment() {
+        return department;
     }
 
-    public void setbDay(int bDay) {
-        this.bDay = bDay;
+    public void setDepartment(String department) {
+        this.department = department;
     }
 
-    public int getbMonth() {
-        return bMonth;
+    public String getFormFactor() {
+        return formFactor;
     }
 
-    public void setbMonth(int bMonth) {
-        this.bMonth = bMonth;
+    public void setFormFactor(String formFactor) {
+        this.formFactor = formFactor;
     }
 
-    public int getbYear() {
-        return bYear;
+    public String getHomeDistrict() {
+        return homeDistrict;
     }
 
-    public void setbYear(int bYear) {
-        this.bYear = bYear;
+    public void setHomeDistrict(String homeDistrict) {
+        this.homeDistrict = homeDistrict;
+    }
+
+    public String getRequestStatus() {
+        return requestStatus;
+    }
+
+    public void setRequestStatus(String requestStatus) {
+        this.requestStatus = requestStatus;
+    }
+
+    public String getSession() {
+        return session;
+    }
+
+    public void setSession(String session) {
+        this.session = session;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 
     public int getDonateTimes() {
@@ -152,35 +176,43 @@ public class Dnr_Healper {
         this.donateTimes = donateTimes;
     }
 
-    public int getdDay() {
-        return dDay;
+    public int getPenalty() {
+        return penalty;
     }
 
-    public void setdDay(int dDay) {
-        this.dDay = dDay;
+    public void setPenalty(int penalty) {
+        this.penalty = penalty;
     }
 
-    public int getdMonth() {
-        return dMonth;
+    public Double getCurrentLocationLatitude() {
+        return currentLocationLatitude;
     }
 
-    public void setdMonth(int dMonth) {
-        this.dMonth = dMonth;
+    public void setCurrentLocationLatitude(Double currentLocationLatitude) {
+        this.currentLocationLatitude = currentLocationLatitude;
     }
 
-    public int getdYear() {
-        return dYear;
+    public Double getCurrentLocationLongitude() {
+        return currentLocationLongitude;
     }
 
-    public void setdYear(int dYear) {
-        this.dYear = dYear;
+    public void setCurrentLocationLongitude(Double currentLocationLongitude) {
+        this.currentLocationLongitude = currentLocationLongitude;
     }
 
-    public String getUID() {
-        return UID;
+    public boolean isAvailable() {
+        return available;
     }
 
-    public void setUID(String UID) {
-        this.UID = UID;
+    public void setAvailable(boolean available) {
+        this.available = available;
+    }
+
+    public boolean isDonating() {
+        return donating;
+    }
+
+    public void setDonating(boolean donating) {
+        this.donating = donating;
     }
 }

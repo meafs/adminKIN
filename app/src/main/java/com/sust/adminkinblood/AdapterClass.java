@@ -1,6 +1,7 @@
 package com.sust.adminkinblood;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -86,7 +87,6 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.ViewHolder> 
 
     @Override
     public Filter getFilter() {
-
         return fileterd;
     }
     private Filter fileterd = new Filter() {
@@ -103,11 +103,15 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.ViewHolder> 
                     if(item.getBloodGroup().toLowerCase().contains(searchKey)){
 
                         fileterdList.add(item);
+
                     }
                 }
             }
             FilterResults results = new FilterResults();
+
             results.values = fileterdList;
+
+
             return results;
         }
 
@@ -115,9 +119,14 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.ViewHolder> 
         protected void publishResults(CharSequence constraint, FilterResults results) {
               mData.clear();
               mData.addAll((Collection<? extends Dnr_Healper>) results.values);
+
+            Log.d("AdapterClass", "publishResults: " + "Publish results");
               notifyDataSetChanged();
         }
     };
+
+
+
 
     public interface OnListListener{
         void OnListClick(int position);

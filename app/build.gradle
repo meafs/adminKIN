@@ -12,7 +12,7 @@ android {
 
     defaultConfig {
         applicationId "com.sust.adminkinblood"
-        minSdkVersion 16
+        minSdkVersion 21
         targetSdkVersion 30
         multiDexEnabled true
         versionCode 1
