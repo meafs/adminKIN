@@ -55,6 +55,7 @@ import com.sust.adminkinblood.notification.NotificationSender;
 import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -65,7 +66,7 @@ import retrofit2.Response;
 
 import static android.Manifest.permission.CALL_PHONE;
 
-public class DonorSearchActivity extends AppCompatActivity implements AdapterClass.OnListListener{
+public class DonorSearchActivity extends AppCompatActivity implements AdapterClass.OnListListener {
 
 
     private static final String TAG = "Donor Activity";
@@ -83,7 +84,7 @@ public class DonorSearchActivity extends AppCompatActivity implements AdapterCla
     private String requesterUidForDonor_;
     private APIService apiService;
     private EditText editText;
-    private ArrayList<Dnr_Healper> searchResult  = new ArrayList<>();
+    private ArrayList<Dnr_Healper> searchResult = new ArrayList<>();
     ArrayList<Dnr_Healper> mylist = new ArrayList<>();
 
 
@@ -92,7 +93,7 @@ public class DonorSearchActivity extends AppCompatActivity implements AdapterCla
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donor_search);
 
-        editText = findViewById(R.id.searchbox);
+        // editText = findViewById(R.id.searchbox);
 
         apiService = Client.getClient("https://fcm.googleapis.com/").create(APIService.class);
 
@@ -125,15 +126,14 @@ public class DonorSearchActivity extends AppCompatActivity implements AdapterCla
                 for (DocumentSnapshot d : myList) {
                     Dnr_Healper dnr = d.toObject(Dnr_Healper.class);
 
-                    //  if(dnr.getDonorStatus() != null)
-
-                    if (dnr.getDonorStatus().equals("positive") && dnr.isAvailable()  ) {
+                    if (dnr.getDonorStatus() != null && dnr.getDonorStatus().equals("positive") && dnr.isAvailable()) { // Add your conditions here
                         // Toast.makeText(Donors.this,"positive held",Toast.LENGTH_SHORT).show();
                         dnr_list.add(dnr);
                     }
                 }
-                String size = String.valueOf(dnr_list.size());
-                Toast.makeText(DonorSearchActivity.this,size,Toast.LENGTH_SHORT).show();
+
+                Collections.sort(dnr_list, new Sorter());
+                Toast.makeText(DonorSearchActivity.this, "Data fetch complete", Toast.LENGTH_SHORT).show();
 
             } else {
                 Toast.makeText(DonorSearchActivity.this, "Document does not exist", Toast.LENGTH_SHORT).show();
@@ -177,6 +177,8 @@ public class DonorSearchActivity extends AppCompatActivity implements AdapterCla
         }*/
 
 
+
+        /*
         editText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -196,6 +198,8 @@ public class DonorSearchActivity extends AppCompatActivity implements AdapterCla
         });
 
 
+
+         */
 
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -233,25 +237,20 @@ public class DonorSearchActivity extends AppCompatActivity implements AdapterCla
 
                 AdapterClass adapterClass = new AdapterClass(DonorSearchActivity.this, mylist, DonorSearchActivity.this);
                 for (Dnr_Healper object : dnr_list) {
-                    if (object.getBloodGroup().toLowerCase().contains(str.toLowerCase())) {
+                    if (object.getBloodGroup().toLowerCase().contains(str.toLowerCase()) || object.getHomeDistrict().toLowerCase().contains(str.toLowerCase())) {
                         mylist.add(object);
 
                     }
-
-
                 }
 
                 adapterClass.notifyDataSetChanged();
-
-
-
+                Collections.sort(mylist, new Sorter());
 
                 recyclerView.setLayoutManager(new LinearLayoutManager(DonorSearchActivity.this));
 
-                Log.d(TAG, "search: " );
+                Log.d(TAG, "search: ");
 
                 recyclerView.setAdapter(adapterClass);
-
 
 
             }
@@ -268,7 +267,7 @@ public class DonorSearchActivity extends AppCompatActivity implements AdapterCla
         //AdapterClass adapterClass = new AdapterClass(DonorSearchActivity.this,searchResult,DonorSearchActivity.this);
 
 
-        if(query.trim().length()!=0) {
+        if (query.trim().length() != 0) {
 
 
             for (Dnr_Healper object : dnr_list) {
@@ -279,9 +278,7 @@ public class DonorSearchActivity extends AppCompatActivity implements AdapterCla
             }
 
 
-
-
-            DonorSearchAdapter donorSearchAdapter = new DonorSearchAdapter(searchResult,DonorSearchActivity.this, donorinfo);
+            DonorSearchAdapter donorSearchAdapter = new DonorSearchAdapter(searchResult, DonorSearchActivity.this, donorinfo);
             recyclerView.setLayoutManager(new LinearLayoutManager(DonorSearchActivity.this));
             recyclerView.setAdapter(donorSearchAdapter);
 

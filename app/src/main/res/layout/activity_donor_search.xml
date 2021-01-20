@@ -17,15 +17,7 @@
 
         />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/searchbox"
-        android:hint="Blood_Group+/- and Place"
-        />
-
     <androidx.recyclerview.widget.RecyclerView
-        android:outlineAmbientShadowColor="#232323"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/rv2"
