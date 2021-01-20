@@ -56,7 +56,7 @@ public class Home extends AppCompatActivity {
             finish();
         });
         btn_findDonor.setOnClickListener(view -> {
-            Intent intent = new Intent(Home.this, Donors.class);
+            Intent intent = new Intent(Home.this, DonorSearchActivity.class);
             startActivity(intent);
         });
 

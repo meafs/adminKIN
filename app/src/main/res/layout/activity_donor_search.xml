@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".DonorSearchActivity">
+
+    <androidx.appcompat.widget.SearchView
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:padding="10dp"
+        app:queryHint="Blood_Group+/- and Place "
+        android:layout_margin="5dp"
+        android:id="@+id/search2"
+
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/searchbox"
+        android:hint="Blood_Group+/- and Place"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:outlineAmbientShadowColor="#232323"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/rv2"
+        android:layout_margin="5dp"
+        />
+
+
+</LinearLayout>
